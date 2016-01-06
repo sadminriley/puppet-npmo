@@ -1,7 +1,7 @@
 ---
 sudo: false
 language: ruby
-bundler_args: --without development --force --clean
+bundler_args: --without development --clean
 script: "bundle update rspec-core ; bundle install --clean --quiet ; bundle exec rake spec SPEC_OPTS='--format documentation'"
 matrix:
   fast_finish: true
