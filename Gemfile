@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 
 puppetversion = ENV.key?('PUPPET_VERSION') ? "= #{ENV['PUPPET_VERSION']}" : ['>= 3.7']
+gem 'coveralls', require: false
 gem 'facter', '>= 2.4.0'
 gem 'puppet', puppetversion
 gem 'puppet-lint', '>= 0.3.2'
