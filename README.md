@@ -1,5 +1,5 @@
 # npmo
-[![Build Status](https://travis-ci.org/x3dfxjunkie/puppet-npmo.svg?branch=master)](https://travis-ci.org/x3dfxjunkie/puppet-npmo)
+[![Build Status](https://travis-ci.org/x3dfxjunkie/puppet-npmo.svg?branch=master)](https://travis-ci.org/x3dfxjunkie/puppet-npmo) [![Coverage Status](https://coveralls.io/repos/x3dfxjunkie/puppet-npmo/badge.svg?branch=master&service=github)](https://coveralls.io/github/x3dfxjunkie/puppet-npmo?branch=master)
 
 #### Table of Contents
 
@@ -77,7 +77,9 @@ know what the ground rules for contributing are.
 
 ### Testing
 
-
+```shell
+sudo apt-get install bundler ruby-dev
+```
 
 If you aren't using changelog, put your release notes here (though you should
 consider using changelog). You may also add any additional sections you feel are
