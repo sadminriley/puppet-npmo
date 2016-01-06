@@ -1,0 +1,66 @@
+---
+sudo: false
+language: ruby
+bundler_args: --without development --force --clean
+script: "bundle update rspec-core ; bundle install --clean --quiet ; bundle exec rake spec SPEC_OPTS='--format documentation'"
+matrix:
+  fast_finish: true
+  include:
+    - rvm: 1.9.3
+      env: PUPPET_GEM_VERSION="~> 3.7.0" FUTURE_PARSER="yes" STRICT_VARIABLES="yes"
+    - rvm: 2.1.7
+      env: PUPPET_GEM_VERSION="~> 3.7.0" FUTURE_PARSER="yes" STRICT_VARIABLES="yes"
+    - rvm: 1.9.3
+      env: PUPPET_GEM_VERSION="~> 3.7.1" FUTURE_PARSER="yes" STRICT_VARIABLES="yes"
+    - rvm: 2.1.7
+      env: PUPPET_GEM_VERSION="~> 3.7.1" FUTURE_PARSER="yes" STRICT_VARIABLES="yes"
+    - rvm: 1.9.3
+      env: PUPPET_GEM_VERSION="~> 3.7.2" FUTURE_PARSER="yes" STRICT_VARIABLES="yes"
+    - rvm: 2.1.7
+      env: PUPPET_GEM_VERSION="~> 3.7.2" FUTURE_PARSER="yes" STRICT_VARIABLES="yes"
+    - rvm: 1.9.3
+      env: PUPPET_GEM_VERSION="~> 3.7.3" FUTURE_PARSER="yes" STRICT_VARIABLES="yes"
+    - rvm: 2.1.7
+      env: PUPPET_GEM_VERSION="~> 3.7.3" FUTURE_PARSER="yes" STRICT_VARIABLES="yes"
+    - rvm: 1.9.3
+      env: PUPPET_GEM_VERSION="~> 3.7.4" FUTURE_PARSER="yes" STRICT_VARIABLES="yes"
+    - rvm: 2.1.7
+      env: PUPPET_GEM_VERSION="~> 3.7.4" FUTURE_PARSER="yes" STRICT_VARIABLES="yes"
+    - rvm: 1.9.3
+      env: PUPPET_GEM_VERSION="~> 3.7.5" FUTURE_PARSER="yes" STRICT_VARIABLES="yes"
+    - rvm: 2.1.7
+      env: PUPPET_GEM_VERSION="~> 3.7.5" FUTURE_PARSER="yes" STRICT_VARIABLES="yes"
+    - rvm: 1.9.3
+      env: PUPPET_GEM_VERSION="~> 3.8.1" FUTURE_PARSER="yes" STRICT_VARIABLES="yes"
+    - rvm: 2.1.7
+      env: PUPPET_GEM_VERSION="~> 3.8.1" FUTURE_PARSER="yes" STRICT_VARIABLES="yes"
+    - rvm: 1.9.3
+      env: PUPPET_GEM_VERSION="~> 3.8.2" FUTURE_PARSER="yes" STRICT_VARIABLES="yes"
+    - rvm: 2.1.7
+      env: PUPPET_GEM_VERSION="~> 3.8.2" FUTURE_PARSER="yes" STRICT_VARIABLES="yes"
+    - rvm: 1.9.3
+      env: PUPPET_GEM_VERSION="~> 3.8.3" FUTURE_PARSER="yes" STRICT_VARIABLES="yes"
+    - rvm: 2.1.7
+      env: PUPPET_GEM_VERSION="~> 3.8.3" FUTURE_PARSER="yes" STRICT_VARIABLES="yes"
+    - rvm: 1.9.3
+      env: PUPPET_GEM_VERSION="~> 3.8.4" FUTURE_PARSER="yes" STRICT_VARIABLES="yes"
+    - rvm: 2.1.7
+      env: PUPPET_GEM_VERSION="~> 3.8.4" FUTURE_PARSER="yes" STRICT_VARIABLES="yes"
+    - rvm: 2.1.7
+      env: PUPPET_GEM_VERSION="~> 4.0.0" STRICT_VARIABLES="yes"
+    - rvm: 2.1.7
+      env: PUPPET_GEM_VERSION="~> 4.1.0" STRICT_VARIABLES="yes"
+    - rvm: 2.1.7
+      env: PUPPET_GEM_VERSION="~> 4.2.0" STRICT_VARIABLES="yes"
+    - rvm: 2.1.7
+      env: PUPPET_GEM_VERSION="~> 4.2.1" STRICT_VARIABLES="yes"
+    - rvm: 2.1.7
+      env: PUPPET_GEM_VERSION="~> 4.2.2" STRICT_VARIABLES="yes"
+    - rvm: 2.1.7
+      env: PUPPET_GEM_VERSION="~> 4.2.3" STRICT_VARIABLES="yes"
+    - rvm: 2.1.7
+      env: PUPPET_GEM_VERSION="~> 4.3.0" STRICT_VARIABLES="yes"
+    - rvm: 2.1.7
+      env: PUPPET_GEM_VERSION="~> 4.3.1" STRICT_VARIABLES="yes"
+notifications:
+  email: false
