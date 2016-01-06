@@ -2,9 +2,6 @@
 #
 #
 class npmo::params {
-  include ::stdlib
-
-  assert_private()
 
   $docker_version = undef
   if $docker_version != undef {

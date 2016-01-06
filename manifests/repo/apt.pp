@@ -3,9 +3,6 @@
 #
 class npmo::repo::apt {
   include ::npmo
-  include ::stdlib
-
-  assert_private()
 
   if $::osfamily == 'Debian' and $::npmo::manage_repo == true {
     apt::source { 'replicated':
