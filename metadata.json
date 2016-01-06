@@ -1,0 +1,14 @@
+{
+  "name": "randerson-npmo",
+  "version": "0.1.0",
+  "author": "randerson",
+  "summary": "Module to install and maintain npmo (On-Site npm).",
+  "license": "Apache 2.0",
+  "source": "https://github.com/x3dfxjunkie/puppet-npmo",
+  "project_page": "https://github.com/x3dfxjunkie/puppet-npmo",
+  "issues_url": "https://github.com/x3dfxjunkie/puppet-npmo/issues",
+  "dependencies": [
+    {"name":"puppetlabs-stdlib","version_requirement":">= 1.0.0"}
+  ]
+}
+
