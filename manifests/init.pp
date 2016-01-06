@@ -1,14 +1,15 @@
 # == Class: npmo
 #
-# Full description of class npmo here.
+# Install and configure npmo (On-Site npm).
 #
 # === Parameters
 #
-# Document parameters here.
+# [*docker_version*]
+#   String. Version of docker package to install.  Defaults to "undef".
 #
-# [*sample_parameter*]
-#   Explanation of what this parameter affects and what it defaults to.
-#   e.g. "Specify one or more upstream ntp servers as an array."
+# [*manage_repo*]
+#   Boolean. Tells module whether or not to install the repositories for npmo
+#   requirements.  Defaults to "true".
 #
 # === Variables
 #
@@ -29,13 +30,19 @@
 #
 # === Authors
 #
-# Author Name <author@domain.com>
+# Russell Anderson <russ@greensamurai.com>
 #
 # === Copyright
 #
-# Copyright 2016 Your name here, unless otherwise noted.
+# Copyright 2016 Russell Anderson.
 #
-class npmo {
+class npmo (
+  $docker_version = $::npmo::params::docker_version,
+  $manage_repo    = $::npmo::params::manage_repo,
+) inherits ::npmo::params {
 
+  if $manage_repo == true {
+    include ::npmo::repo
+  }
 
 }
