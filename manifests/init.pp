@@ -5,11 +5,16 @@
 # === Parameters
 #
 # [*docker_version*]
-#   String. Version of docker package to install.  Defaults to "undef".
+#   String. Version of docker package to install.  Defaults to "installed".
 #
 # [*manage_repo*]
 #   Boolean. Tells module whether or not to install the repositories for npmo
 #   requirements.  Defaults to "true".
+#
+# [*pin_docker_version*]
+#   Boolean. Uses apt pin (or eventually yum versionlock) to maintain the version
+#   of docker.  Requires $docker_version to a regular version number, not
+#   "installed" or "latest".  Defaults to "false".
 #
 # === Variables
 #
@@ -37,8 +42,9 @@
 # Copyright 2016 Russell Anderson.
 #
 class npmo (
-  $docker_version = $::npmo::params::docker_version,
-  $manage_repo    = $::npmo::params::manage_repo,
+  String[5] $docker_version     = $::npmo::params::docker_version,
+  Boolean   $manage_repo        = $::npmo::params::manage_repo,
+  Boolean   $pin_docker_version = $::npmo::params::pin_docker_version,
 ) inherits ::npmo::params {
 
   if $manage_repo == true {
