@@ -79,6 +79,7 @@ know what the ground rules for contributing are.
 
 ```shell
 sudo apt-get install bundler ruby-dev
+bundle install --without development
 ```
 
 If you aren't using changelog, put your release notes here (though you should
