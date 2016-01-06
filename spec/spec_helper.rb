@@ -4,8 +4,7 @@ require 'coveralls'
 
 SimpleCov.formatter = Coveralls::SimpleCov::Formatter
 SimpleCov.start do
-  add_filter '/spec/fixtures/modules/apt'
-  add_filter '/spec/fixtures/modules/stdlib'
+  add_filter 'spec/fixtures/modules/'
 end
 
-Coveralls.wear!
+# Coveralls.wear!
