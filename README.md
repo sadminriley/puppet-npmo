@@ -1,4 +1,5 @@
 # npmo
+[![Build Status](https://travis-ci.org/x3dfxjunkie/puppet-npmo.svg?branch=master)](https://travis-ci.org/x3dfxjunkie/puppet-npmo)
 
 #### Table of Contents
 
