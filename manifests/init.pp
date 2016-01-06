@@ -51,4 +51,7 @@ class npmo (
     include ::npmo::repo
   }
 
+# linux-image-extra-3.13.0-74-generic linux-image-extra-virtual
+
+
 }
