@@ -9,7 +9,7 @@
   "issues_url": "https://github.com/x3dfxjunkie/puppet-npmo/issues",
   "dependencies": [
     {"name":"puppetlabs-apt","version_requirement":">= 2.0.0 < 3.0.0"},
-    {"name":"puppetlabs-stdlib","version_requirement":">= 4.10.0 < 3.0.0"}
+    {"name":"puppetlabs-stdlib","version_requirement":">= 4.10.0 < 5.0.0"}
   ],
   "operatingsystem_support": [
     {
