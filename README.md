@@ -82,6 +82,8 @@ sudo apt-get install bundler ruby-dev
 sudo gem install travis --no-ri --no-rdoc
 bundle install --without development
 travis lint
+bundle exec rake validate
+bundle exec rake spec
 ```
 
 If you aren't using changelog, put your release notes here (though you should
