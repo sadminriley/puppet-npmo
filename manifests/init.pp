@@ -68,6 +68,7 @@ class npmo (
   String[5] $replicated_version = $::npmo::params::replicated_version,
 ) inherits ::npmo::params {
   include ::stdlib
+  include ::npmo::install
 
   if $proxy_ip != '' {
     validate_ip_address($proxy_ip)

@@ -9,7 +9,6 @@ class npmo::params {
     'apparmor',
     'apt-transport-https',
     'ca-certificates',
-    'ca-certificates',
     'curl',
     'linux-image-extra-virtual',
   ]

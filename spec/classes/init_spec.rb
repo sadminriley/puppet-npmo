@@ -2,6 +2,7 @@ require 'spec_helper'
 describe 'npmo' do
 
   let :facts do {
+    :ipaddress       => '127.0.0.1',
     :lsbdistcodename => 'trusty',
     :lsbdistid       => 'Ubuntu',
     :operatingsystem => 'Ubuntu',
@@ -12,6 +13,7 @@ describe 'npmo' do
 
   context 'with defaults for all parameters' do
     it { should contain_class('npmo') }
+    it { should contain_class('npmo::install') }
     it { should contain_class('npmo::params') }
     it { should contain_class('npmo::repo') }
     it { should contain_class('npmo::repo::apt') }
