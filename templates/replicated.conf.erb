@@ -1,0 +1,8 @@
+# Managed by puppet: <%= @name %>
+{
+<%- if scope['::npmo::proxy_ip'] != '' -%>
+    "HttpProxy": "<%= @proxy_ip %>",
+<%- end -%>
+    "LocalAddress": "<%= scope['::npmo::ip_address'] %>",
+    "ReleaseChannel": "stable",
+}
