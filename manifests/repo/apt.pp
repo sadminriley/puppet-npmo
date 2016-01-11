@@ -12,8 +12,8 @@ class npmo::repo::apt {
           id => '68386EDB2C8B75CA615A8C985D4781862AFFAC40',
       },
       location => 'https://get.replicated.com/apt',
-      repos    => 'all',
-      release  => 'stable',
+      repos    => 'stable',
+      release  => 'all',
     }
     apt::source { 'docker':
       ensure   => present,
@@ -23,8 +23,8 @@ class npmo::repo::apt {
           server => 'hkp://p80.pool.sks-keyservers.net:80',
       },
       location => 'https://apt.dockerproject.org/repo',
-      repos    => "ubuntu-${::lsbdistcodename}",
-      release  => 'main',
+      repos    => 'main',
+      release  => "ubuntu-${::lsbdistcodename}",
     }
   }
 

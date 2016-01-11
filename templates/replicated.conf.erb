@@ -1,6 +1,6 @@
 # Managed by puppet: <%= @name %>
 {
-<%- if scope['::npmo::proxy_ip'] != '' -%>
+<%- if scope['::npmo::proxy_ip'] != 'absent' -%>
     "HttpProxy": "<%= @proxy_ip %>",
 <%- end -%>
     "LocalAddress": "<%= scope['::npmo::ip_address'] %>",

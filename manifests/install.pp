@@ -46,4 +46,52 @@ class npmo::install {
     require => Package['replicated', 'replicated-ui', 'replicated-updater'],
   }
 
+  # Node.js
+  if $::npmo::manage_nodejs == true {
+    # Figure out which nodesource repo to use
+    if $::npmo::nodejs_version =~ /^0\.12/ {
+      $repo_url_suffix = assert_type(String[3], '0.12')
+    }
+    elsif $::npmo::nodejs_version =~ /^4\.\d+/ {
+      $repo_url_suffix = assert_type(String[3], '4.x')
+    }
+    elsif $::npmo::nodejs_version =~ /^5\.\d+/ {
+      $repo_url_suffix = assert_type(String[3], '5.x')
+    }
+    else {
+      $repo_url_suffix = assert_type(String[4], '0.10')
+    }
+    if $::npmo::npm_version =~ /^\d+\./ {
+      class { 'nodejs':
+        manage_package_repo   => true,
+        nodejs_package_ensure => $::npmo::nodejs_version,
+        npm_package_name      => false,
+        repo_proxy            => $::npmo::proxy_ip,
+        repo_pin              => '1002',
+        repo_url_suffix       => $repo_url_suffix,
+      } ->
+      package { 'npm':
+        ensure   => $npmo::npm_version,
+        provider => 'npm',
+      }
+      Package['npm'] -> Package <| provider == 'npm' |>
+    } else {
+      class { 'nodejs':
+        manage_package_repo   => true,
+        nodejs_package_ensure => $::npmo::nodejs_version,
+        repo_proxy            => $::npmo::proxy_ip,
+        repo_pin              => '1002',
+        repo_url_suffix       => $repo_url_suffix,
+      }
+    }
+  }
+
+  # npmo
+  package { 'npmo':
+    ensure          => $::npmo::npmo_version,
+    install_options => ['--ignore-scripts'],
+    provider        => 'npm',
+    require         => Class['::nodejs'],
+  }
+
 }

@@ -16,9 +16,26 @@
 #   String. IP address to use for replicated when contacting the Internet. Defaults
 #   to $::ipaddress.
 #
+# [*manage_nodejs*]
+#   Boolean. Tells module whether or not to manage the repo and version for
+#   nodejs.  This uses puppet-nodejs (https://forge.puppetlabs.com/puppet/nodejs).
+#   Defaults to "true".
+#
 # [*manage_repo*]
 #   Boolean. Tells module whether or not to install the repositories for npmo
 #   requirements.  Defaults to "true".
+#
+# [*nodejs_version*]
+#   String.  Define the version for Node.js.  This will also dictate to ::nodejs
+#   which repo from nodesource to use, and requires 'manage_nodejs' == true.
+#   Defaults to 'installed' (0.10 branch)
+#
+# [*npm_version*]
+#   String. Manage the version of npm, using ::nodejs.  Defaults to the version
+#   installed with the version of Node.js.
+#
+# [*npmo_version*]
+#   String. Manage the version of npmo, using ::nodejs.  Defaults to 'installed'.
 #
 # [*pin_docker_version*]
 #   Boolean. Uses apt pin (or eventually yum versionlock) to maintain the version
@@ -27,27 +44,17 @@
 #
 # [*proxy_ip*]
 #   String.  Proxy IP address for replicated to use for npmo.  Defaults
-#   to empty.
+#   to 'absent'.
 #
 # [*replicated_version*]
 #   String. Loosely controls the version of replicated software.  Currently, this
 #    can only be 'installed' or 'latest'.  Defaults to 'installed'.
 #
-# === Variables
-#
-# Here you should define a list of variables that this module would require.
-#
-# [*sample_variable*]
-#   Explanation of how this variable affects the function of this class and if
-#   it has a default. e.g. "The parameter enc_ntp_servers must be set by the
-#   External Node Classifier as a comma separated list of hostnames." (Note,
-#   global variables should be avoided in favor of class parameters as
-#   of Puppet 2.6.)
-#
 # === Examples
 #
 #  class { 'npmo':
-#    servers => [ 'pool.ntp.org', 'ntp.local.company.com' ],
+#    docker_version     = '1.9.1',
+#    pin_docker_version = true,
 #  }
 #
 # === Authors
@@ -62,7 +69,11 @@ class npmo (
   Array     $docker_deps        = $::npmo::params::docker_deps,
   String[5] $docker_version     = $::npmo::params::docker_version,
   String[5] $ip_address         = $::npmo::params::ip_address,
+  Boolean   $manage_nodejs      = $::npmo::params::manage_nodejs,
   Boolean   $manage_repo        = $::npmo::params::manage_repo,
+  String[5] $nodejs_version     = $::npmo::params::nodejs_version,
+  String[5] $npm_version        = $::npmo::params::npm_version,
+  String[5] $npmo_version       = $::npmo::params::npmo_version,
   Boolean   $pin_docker_version = $::npmo::params::pin_docker_version,
   String    $proxy_ip           = $::npmo::params::proxy_ip,
   String[5] $replicated_version = $::npmo::params::replicated_version,
@@ -70,7 +81,7 @@ class npmo (
   include ::stdlib
   include ::npmo::install
 
-  if $proxy_ip != '' {
+  if $proxy_ip != 'absent' {
     validate_ip_address($proxy_ip)
   }
 

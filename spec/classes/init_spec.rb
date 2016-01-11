@@ -2,12 +2,13 @@ require 'spec_helper'
 describe 'npmo' do
 
   let :facts do {
-    :ipaddress       => '127.0.0.1',
-    :kernelrelease   => '3.13.0-61-generic',
-    :lsbdistcodename => 'trusty',
-    :lsbdistid       => 'Ubuntu',
-    :operatingsystem => 'Ubuntu',
-    :osfamily        => 'Debian',
+    :ipaddress              => '127.0.0.1',
+    :kernelrelease          => '3.13.0-61-generic',
+    :lsbdistcodename        => 'trusty',
+    :lsbdistid              => 'Ubuntu',
+    :operatingsystem        => 'Ubuntu',
+    :operatingsystemrelease => '14.04',
+    :osfamily               => 'Debian',
     }
   end
 
@@ -34,12 +35,14 @@ describe 'npmo' do
         }
       ).that_comes_before('Package[docker-engine]')
     }
+    it { is_expected.to contain_apt__pin('nodesource').with(:origin => 'deb.nodesource.com') }
     it { is_expected.to contain_package('apparmor').that_comes_before('Package[docker-engine]') }
-    it { is_expected.to contain_package('apt-transport-https').that_comes_before('Package[docker-engine]') }
-    it { is_expected.to contain_package('ca-certificates').that_comes_before('Package[docker-engine]') }
+    it { is_expected.to contain_package('apt-transport-https') }  # .that_comes_before('Package[docker-engine]') }
+    it { is_expected.to contain_package('ca-certificates') }  # .that_comes_before('Package[docker-engine]') }
     it { is_expected.to contain_package('curl').that_comes_before('Package[docker-engine]') }
     it { is_expected.to contain_package('linux-image-extra-3.13.0-61-generic').that_comes_before('Package[docker-engine]') }
     it { is_expected.to contain_package('linux-image-extra-virtual').that_comes_before('Package[docker-engine]') }
+    it { is_expected.to contain_package('npmo').that_requires(['Class[nodejs]']) }
     it { is_expected.to contain_package('docker-engine').with(
       :ensure => 'installed',
       )
