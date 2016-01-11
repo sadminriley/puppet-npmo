@@ -25,6 +25,9 @@
 #   Boolean. Tells module whether or not to install the repositories for npmo
 #   requirements.  Defaults to "true".
 #
+# [*manage_repo*]
+#   Boolean. Specify if module should manage the services.  Defaults to true.
+#
 # [*nodejs_version*]
 #   String.  Define the version for Node.js.  This will also dictate to ::nodejs
 #   which repo from nodesource to use, and requires 'manage_nodejs' == true.
@@ -71,6 +74,7 @@ class npmo (
   String[5] $ip_address         = $::npmo::params::ip_address,
   Boolean   $manage_nodejs      = $::npmo::params::manage_nodejs,
   Boolean   $manage_repo        = $::npmo::params::manage_repo,
+  Boolean   $manage_service     = $::npmo::params::manage_service,
   String[5] $nodejs_version     = $::npmo::params::nodejs_version,
   String[5] $npm_version        = $::npmo::params::npm_version,
   String[5] $npmo_version       = $::npmo::params::npmo_version,
@@ -79,7 +83,9 @@ class npmo (
   String[5] $replicated_version = $::npmo::params::replicated_version,
 ) inherits ::npmo::params {
   include ::stdlib
+  include ::npmo::files
   include ::npmo::install
+  include ::npmo::services
 
   if $proxy_ip != 'absent' {
     validate_ip_address($proxy_ip)

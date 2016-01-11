@@ -14,10 +14,12 @@ describe 'npmo' do
 
   context 'with defaults for all parameters' do
     it { is_expected.to contain_class('npmo') }
+    it { is_expected.to contain_class('npmo::files') }
     it { is_expected.to contain_class('npmo::install') }
     it { is_expected.to contain_class('npmo::params') }
     it { is_expected.to contain_class('npmo::repo') }
     it { is_expected.to contain_class('npmo::repo::apt') }
+    it { is_expected.to contain_class('npmo::services') }
     it { is_expected.to contain_apt__source('replicated').with(
       :location => 'https://get.replicated.com/apt',
       :key => { "id" => '68386EDB2C8B75CA615A8C985D4781862AFFAC40'}
@@ -62,6 +64,7 @@ describe 'npmo' do
       :ensure => 'installed',
       )
     }
+    it { is_expected.to contain_file('/etc/replicated-license-retrieval.json').with_content(/"appid": "66045325f001a1e0ccde2d457cb2b30b",/) }
     it { is_expected.to contain_file('/etc/replicated.conf').with_content(/"LocalAddress": "127.0.0.1"/) }
     it { is_expected.to contain_file('/etc/logrotate.d/replicated').that_requires([
       'Package[replicated]',
@@ -69,6 +72,10 @@ describe 'npmo' do
       'Package[replicated-updater]',
       ])
     }
+    it { is_expected.to contain_service('docker').with(:ensure => 'running') }
+    it { is_expected.to contain_service('replicated').with(:ensure => 'running') }
+    it { is_expected.to contain_service('replicated-ui').with(:ensure => 'running') }
+    it { is_expected.to contain_service('replicated-updater').with(:ensure => 'running') }
 
   end
 

@@ -16,6 +16,7 @@ class npmo::params {
   $ip_address = $::ipaddress
   $manage_nodejs = true
   $manage_repo = true
+  $manage_service = true
   $nodejs_version = 'installed'
   $npm_version = 'installed'
   $npmo_version = 'installed'

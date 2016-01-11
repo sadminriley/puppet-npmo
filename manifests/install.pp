@@ -26,24 +26,7 @@ class npmo::install {
     'replicated-updater',
     ]:
     ensure  => $::npmo::replicated_version,
-    require => [File['/etc/replicated.conf'], Package['docker-engine']],
-  }
-
-  file { '/etc/replicated.conf':
-    ensure  => file,
-    content => template("${module_name}/replicated.conf.erb"),
-    group   => 'root',
-    mode    => '0444',
-    owner   => 'root',
-  }
-
-  file { '/etc/logrotate.d/replicated':
-    ensure  => file,
-    content => template("${module_name}/logrotate.d_replicated.erb"),
-    group   => 'root',
-    mode    => '0444',
-    owner   => 'root',
-    require => Package['replicated', 'replicated-ui', 'replicated-updater'],
+    require => [File['/etc/replicated.conf', '/etc/replicated-license-retrieval.json'], Package['docker-engine']],
   }
 
   # Node.js
