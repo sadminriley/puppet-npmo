@@ -4,7 +4,7 @@
 class npmo::repo::apt {
   include ::npmo
 
-  if $::osfamily == 'Debian' and $::npmo::manage_repo == true {
+  if $::osfamily == 'Debian' and $::npmo::manage_npmo_repo == true {
     apt::source { 'replicated':
       ensure   => present,
       before   => Package['replicated', 'replicated-ui', 'replicated-updater'],

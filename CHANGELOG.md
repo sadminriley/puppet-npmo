@@ -1,6 +1,7 @@
 ## Release 0.6.2
 
 - bug-fix: manage ::nodejs should be separate from nodesource repo.
+- bug-fix: ::npmo::repo::apt to reference updated $::npmo::manage_npmo_repo
 
 ## Release 0.6.1
 
