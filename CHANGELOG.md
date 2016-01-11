@@ -1,3 +1,7 @@
+## Release 0.6.2
+
+- bug-fix: manage ::nodejs should be separate from nodesource repo.
+
 ## Release 0.6.1
 
 - Added the ability to manage npmo repos seperate from nodesource ones.

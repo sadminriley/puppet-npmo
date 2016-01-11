@@ -30,7 +30,7 @@ class npmo::install {
   }
 
   # Node.js
-  if $::npmo::manage_nodejs_repo == true {
+  if $::npmo::manage_nodejs == true {
     # Figure out which nodesource repo to use
     if $::npmo::nodejs_version =~ /^0\.12/ {
       $repo_url_suffix = assert_type(String[3], '0.12')
@@ -46,7 +46,7 @@ class npmo::install {
     }
     if $::npmo::npm_version =~ /^\d+\./ {
       class { 'nodejs':
-        manage_package_repo   => true,
+        manage_package_repo   => $::npmo::manage_nodejs_repo,
         nodejs_package_ensure => $::npmo::nodejs_version,
         npm_package_name      => false,
         repo_proxy            => $::npmo::proxy_ip,
@@ -60,7 +60,7 @@ class npmo::install {
       Package['npm'] -> Package <| provider == 'npm' |>
     } else {
       class { 'nodejs':
-        manage_package_repo   => true,
+        manage_package_repo   => $::npmo::manage_nodejs_repo,
         nodejs_package_ensure => $::npmo::nodejs_version,
         repo_proxy            => $::npmo::proxy_ip,
         repo_pin              => '1002',
