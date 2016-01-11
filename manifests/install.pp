@@ -30,7 +30,7 @@ class npmo::install {
   }
 
   # Node.js
-  if $::npmo::manage_nodejs == true {
+  if $::npmo::manage_nodejs_repo == true {
     # Figure out which nodesource repo to use
     if $::npmo::nodejs_version =~ /^0\.12/ {
       $repo_url_suffix = assert_type(String[3], '0.12')

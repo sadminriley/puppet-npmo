@@ -15,7 +15,8 @@ class npmo::params {
   $docker_version = 'installed'
   $ip_address = $::ipaddress
   $manage_nodejs = true
-  $manage_repo = true
+  $manage_nodejs_repo = true
+  $manage_npmo_repo = true
   $manage_service = true
   $nodejs_version = 'installed'
   $npm_version = 'installed'
