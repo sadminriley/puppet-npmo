@@ -161,13 +161,13 @@ travis lint --skip-completion-check
 One-time with system libraries (puppet v4):
 ```shell
 bundle exec rake validate
-bundle exec rake spec
+bundle exec rake spec SPEC_OPTS='--format documentation'
 ```
 
 One-time with system libraries (puppet v3):
 ```shell
 bundle exec rake validate FUTURE_PARSER='yes'
-bundle exec rake spec FUTURE_PARSER='yes'
+bundle exec rake spec FUTURE_PARSER='yes' SPEC_OPTS='--format documentation'
 ```
 
 <!-- Travis-style gauntlet:
