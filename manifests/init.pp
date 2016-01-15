@@ -29,7 +29,7 @@
 #   Boolean. Tells module whether or not to install the repositories for npmo
 #   requirements.  Defaults to "true".
 #
-# [*manage_repo*]
+# [*manage_service*]
 #   Boolean. Specify if module should manage the services.  Defaults to true.
 #
 # [*nodejs_version*]
