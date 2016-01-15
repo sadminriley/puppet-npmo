@@ -1,6 +1,6 @@
 {
 <%- if scope['::npmo::proxy_ip'] != 'absent' -%>
-    "HttpProxy": "<%= @proxy_ip %>",
+    "HttpProxy": "<%= scope['::npmo::proxy_ip'] %>",
 <%- end -%>
     "LocalAddress": "<%= scope['::npmo::ip_address'] %>",
     "ReleaseChannel": "stable"
