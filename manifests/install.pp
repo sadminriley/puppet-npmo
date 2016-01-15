@@ -19,6 +19,16 @@ class npmo::install {
     }
   }
 
+  if $::npmo::pin_docker_version == true {
+    if $::npmo::docker_version =~ /^\d/ {
+      apt::pin { 'docker-engine':
+        packages => 'docker-engine',
+        priority => 1002,
+        version  => $npmo::docker_version,
+      }
+    }
+  }
+
   package { 'docker-engine':
     ensure => $::npmo::docker_version,
   }

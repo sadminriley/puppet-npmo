@@ -1,3 +1,7 @@
+## Release 0.6.3
+
+- Testing for all parameters
+
 ## Release 0.6.2
 
 - bug-fix: manage ::nodejs should be separate from nodesource repo.

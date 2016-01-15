@@ -1,6 +1,6 @@
 {
   "name": "puppet-npmo",
-  "version": "0.6.2",
+  "version": "0.6.3",
   "author": "randerson",
   "summary": "Module to install and maintain npmo (On-Site npm).",
   "license": "Apache-2.0",
