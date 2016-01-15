@@ -2,6 +2,10 @@
 #
 #
 class npmo::files {
+  if $module_name != $caller_module_name {
+    fail("Module ${name} is private.")
+  }
+
   include ::npmo
 
   file { '/etc/replicated.conf':

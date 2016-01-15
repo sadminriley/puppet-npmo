@@ -2,6 +2,10 @@
 #
 #
 class npmo::repo::apt {
+  if $module_name != $caller_module_name {
+    fail("Module ${name} is private.")
+  }
+
   include ::npmo
 
   if $::osfamily == 'Debian' and $::npmo::manage_npmo_repo == true {

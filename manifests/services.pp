@@ -2,6 +2,10 @@
 #
 #
 class npmo::services {
+  if $module_name != $caller_module_name {
+    fail("Module ${name} is private.")
+  }
+
   include ::npmo
 
   if $::npmo::manage_service {
